@@ -1,54 +1,167 @@
+<!doctype html>
 <html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-</head>
-<form name="contactform" method="post" action="send_form_email.php">
-<table width="450px">
-<tr>
- <td valign="top">
-  <label for="first_name">First Name *</label>
- </td>
- <td valign="top">
-  <input  type="text" name="first_name" maxlength="50" size="30">
- </td>
-</tr>
-<tr>
- <td valign="top"">
-  <label for="last_name">Last Name *</label>
- </td>
- <td valign="top">
-  <input  type="text" name="last_name" maxlength="50" size="30">
- </td>
-</tr>
-<tr>
- <td valign="top">
-  <label for="email">Email Address *</label>
- </td>
- <td valign="top">
-  <input  type="text" name="email" maxlength="80" size="30">
- </td>
-</tr>
-<tr>
- <td valign="top">
-  <label for="telephone">Telephone Number</label>
- </td>
- <td valign="top">
-  <input  type="text" name="telephone" maxlength="30" size="30">
- </td>
-</tr>
-<tr>
- <td valign="top">
-  <label for="comments">Comments *</label>
- </td>
- <td valign="top">
-  <textarea  name="comments" maxlength="1000" cols="25" rows="6"></textarea>
- </td>
-</tr>
-<tr>
- <td colspan="2" style="text-align:center">
-  <input type="submit" value="Submit">   <a href="http://www.freecontactform.com/email_form.php">Email Form</a>
- </td>
-</tr>
-</table>
-</form>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>DOM events</h1>
+					<h6>how it works?</h6>
+</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+					<h2>Document Object Model</h2>
+					<p>
+						How about planting a couple of trees?<br> <img src="img/groot1.png">
+					</p>
+					</section>
+					<section>
+						<img src="https://images.slideplayer.com/26/8657676/slides/slide_4.jpg">
+					</section>
+		
+				</section>
+				<section>
+				<section>
+					<h1>Events</h1>
+				</section>
+				<section><p style="font-weight: bold;font-size:60px;">Mouse events<br> Keyboard<br> Events on controls<br>Document events<br>CSS events</p></section>
+				</section>
+				<section>
+					<section>Mouse<br>
+						<p style="color:yellow;text-align: left;font-weight: bold;margin-left: 50px;">click<br>contextmenu<br>mouseover<br>mousedown/mouseup<br>mousemoving</p>
+					</section>
+					<section>Controls<br>
+					<p style="color:yellow;text-align: left;font-weight: bold;margin-left: 50px;">submit<br>focus</p>
+				</section>
+					<section>Keyboard<br>
+						<p style="color:yellow;text-align: left;font-weight: bold;margin-left: 50px;">keydown<br>keyup</p></section>
+					<section>Document<br>
+						<p style="color:yellow;text-align: left;font-weight: bold;margin-left: 50px;">DOMContentLoaded</p></section>
+					<section>CSS<br>
+						<p style="color:yellow;text-align: left;font-weight: bold;margin-left: 50px;">transitionend</p></section>
+				</section>
+				<section>How can we Assign event handlers?
+				<section>Using HTML attribute</section>
+				<section>Using DOM object</section>
+				<section>access to the item through this</section>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## HTML attribute
+
+						
+
+						```
+						  <input value="Click on me!" onclick="alert('Click!')" type="button">
+						```
+					</script>
+					</section>
+				<section data-markdown>
+					<script type="text/template">
+						## DOM object
+
+						
+
+						```
+						  <input id="elem" type="button" value="Click on me" />
+							<script>
+ 								 elem.onclick = function() {
+  								 alert( 'Great!' );
+ 													 };
+							</sсript>
+						```
+					</script>
+					</section>
+					<section data-markdown>
+					<script type="text/template">
+						## Access through this
+
+						
+
+						```
+						  <button onclick="alert(this.innerHTML)">Click on me</button>
+						```
+					</script>
+					</section>
+					<section>addEventListener and removeEventListener methods</section>
+						<section>addEventListener
+							<section data-markdown><script type="text/template">
+						The handler is assigned by calling addEventListener with three arguments:
+
+						
+
+						```
+						  element.addEventListener(event, handler[, phase]);
+						```
+					</script></section>
+							<section><b style="color:yellow;">event</b><br> Event name, for example click</section>
+							<section><b style="color:yellow;">handler</b><br> A reference to the function to be set by the handler.</section>
+							<section><b style="color:yellow;">phase</b><br> An optional argument, the "phase", on which the handler should work. This argument is rarely needed, we will look at it later.</section>
+						</section>
+						<section>removeEventListener
+							<section data-markdown>
+								<script type="text/template">
+									```
+									element.removeEventListener(event, handler[, phase]);
+									```
+								</script>
+							</section>
+						</section>
+						<section>
+				<section>addEventListener VS onclick</section>
+				<section><p style="font-size: 60px"><b>addEventListener</b></p>
+				<ul>
+					<li>Some events can only be assigned via addEventListener.</li>
+					<li>The addEventListener method allows you to assign many handlers to a single event.</li>
+				</ul>
+				</section>
+				<section><p style="font-size: 60px"><b>onclick</b></p>
+				<ul>
+					<li>The handler assigned via onclick is easier to remove or replace.</li>
+					<li>The onclick is a cross-browser method.</li>
+				</ul>
+				</section>
+						</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
 </html>
